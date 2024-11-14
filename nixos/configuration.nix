@@ -105,9 +105,13 @@
     description = "Anton Linevych";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
     ];
   };
+
+
+  # Switch to ZSH
+  programs.zsh.enable = true;
+  users.defaultUserShell=pkgs.zsh;
 
   # Install firefox.
   programs.firefox.enable = true;

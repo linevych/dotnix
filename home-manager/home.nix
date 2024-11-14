@@ -24,6 +24,7 @@
     # CLI tools
     pkgs.tree
     pkgs.bat
+    pkgs.thefuck
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -57,6 +58,17 @@
     enable = true;
     userName = "antonlinevych";
     userEmail = "anton@linevich.net";
+  };
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+        enable = true;
+        theme = "agnoster";
+        plugins = ["git" "sudo" "thefuck"];
+    };
+    envExtra = ''DEFAULT_USER=anton''; # TODO: Remove hardcoded value
   };
 
   # Home Manager can also manage your environment variables through
