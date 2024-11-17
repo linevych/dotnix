@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
-  
+
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -22,9 +22,12 @@
 
   # Networking
   networking.hostName = "devBox";
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   networking.networkmanager = {
-    enable=true;
+    enable = true;
   };
 
   # Set your time zone.
@@ -53,6 +56,21 @@
   services.xserver.displayManager.gdm.autoSuspend = false;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  environment.sessionVariables = {
+    # If your cursor becomes invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+  #  xdg.portal.enable = true;
+  #  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -70,21 +88,23 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anton = {
     isNormalUser = true;
     description = "Anton Linevych";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
+    packages = with pkgs; [ ];
   };
-
 
   # Switch to ZSH
   programs.zsh.enable = true;
-  users.defaultUserShell=pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -92,12 +112,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-      wget
-      neovim
-      htop
-      neofetch
-      git
-      home-manager
+    wget
+    neovim
+    htop
+    neofetch
+    git
+    home-manager
   ];
 
   # This value determines the NixOS release from which the default
@@ -113,9 +133,9 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.nvidia = { 
+  hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -125,13 +145,13 @@
 
     # Custom version so it works with kernel 6.11 kernel. 6.11 kernel is required to get WiFi driver to work
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.35.03";
-  	    sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-        sha256_aarch64 = "";
-        openSha256 = "";
-        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-        persistencedSha256 = "";
-   };
+      version = "560.35.03";
+      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+      sha256_aarch64 = "";
+      openSha256 = "";
+      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+      persistencedSha256 = "";
+    };
   };
   hardware.enableRedistributableFirmware = true;
 }

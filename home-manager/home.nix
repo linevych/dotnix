@@ -16,12 +16,22 @@
   home.packages = [
     pkgs.jetbrains.pycharm-professional
     pkgs.nil
+    pkgs.nixfmt-rfc-style
 
     # CLI tools
     pkgs.tree
     pkgs.bat
     pkgs.thefuck
+
+    # Hyprland dependencies (todo: move the module if possible)
+    pkgs.waybar
+    pkgs.dunst
+    pkgs.swww
+    pkgs.kitty
+    pkgs.rofi-wayland
   ];
+
+  imports = [ ./hyprland.nix ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -47,9 +57,13 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
-        enable = true;
-        theme = "agnoster";
-        plugins = ["git" "sudo" "thefuck"];
+      enable = true;
+      theme = "agnoster";
+      plugins = [
+        "git"
+        "sudo"
+        "thefuck"
+      ];
     };
     envExtra = ''DEFAULT_USER=anton''; # TODO: Remove hardcoded value
   };
