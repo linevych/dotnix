@@ -91,13 +91,14 @@
     jack.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.plugdev = { };
   users.users.anton = {
     isNormalUser = true;
     description = "Anton Linevych";
     extraGroups = [
       "networkmanager"
       "wheel"
+      "plugdev"
     ];
     packages = with pkgs; [ ];
   };
@@ -154,4 +155,20 @@
     };
   };
   hardware.enableRedistributableFirmware = true;
+
+  # udev rules to support zsa voyager flashing
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "voyager_udev";
+      text = ''
+        # Rules for Oryx web flashing and live training
+        KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+        KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+        SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+        # Rule for the Voyager
+        SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1977", GROUP="plugdev"
+      '';
+      destination = "/etc/udev/rules.d/50-zsa.rules";
+    })
+  ];
 }
