@@ -119,6 +119,7 @@
     neofetch
     git
     home-manager
+    networkmanagerapplet
   ];
 
   # This value determines the NixOS release from which the default
