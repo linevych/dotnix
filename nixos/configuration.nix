@@ -130,7 +130,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
@@ -145,15 +145,7 @@
     open = false;
     nvidiaSettings = false; # Disabled because otherwise it will not buld. Revisit later when it becomes stable.
 
-    # Custom version so it works with kernel 6.11 kernel. 6.11 kernel is required to get WiFi driver to work
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "560.35.03";
-      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-      sha256_aarch64 = "";
-      openSha256 = "";
-      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-      persistencedSha256 = "";
-    };
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   hardware.enableRedistributableFirmware = true;
 
