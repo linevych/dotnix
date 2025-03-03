@@ -34,6 +34,20 @@ in
           "$mod, D, exec, $menu"
           "$mod SHIFT, Q, exit"
           "$mod SHIFT, E, killactive"
+
+          # Swich windows with arrow keys
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
+
+          # Moving/resizing windows
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizeactive"
+          "$mod SHIFT, right, resizeactive, 40 0"
+          "$mod SHIFT, left, resizeactive, -40 0"
+          "$mod SHIFT, up, resizeactive, 0 -40"
+          "$mod SHIFT, down, resizeactive, 0 40"
         ]
         ++ (
           # workspaces
