@@ -36,9 +36,27 @@
 
     # For configuring the keyboard because Oryx doesn't want to support Firefox
     pkgs.chromium
+
+    # development stuff
+    pkgs.go
+
+    # clipboard manager
+    pkgs.copyq
+
+    # reminder: this will be changed when 25.05 is released:
+    # https://www.reddit.com/r/NixOS/comments/1h1nc2a/nerdfonts_has_been_separated_into_individual_font/
+    (pkgs.nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+      ];
+    })
+
   ];
 
-  imports = [ ./hyprland.nix ];
+  imports = [
+    ./hyprland.nix
+    ./waybar.nix
+  ];
 
   programs.git = {
     enable = true;
