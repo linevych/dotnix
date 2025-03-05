@@ -14,7 +14,6 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = [
-    pkgs.jetbrains.pycharm-professional
     pkgs.nil
     pkgs.nixfmt-rfc-style
 
@@ -34,11 +33,15 @@
     pkgs.inkscape
     pkgs.gimp
 
+    pkgs.mupdf
+
     # For configuring the keyboard because Oryx doesn't want to support Firefox
     pkgs.chromium
 
     # development stuff
     pkgs.go
+    pkgs.jetbrains.pycharm-professional
+    pkgs.jetbrains.goland
 
     # clipboard manager
     pkgs.copyq
@@ -50,8 +53,18 @@
         "JetBrainsMono"
       ];
     })
+    pkgs.hyprcursor
 
   ];
+
+  gtk = {
+    enable = true;
+  };
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
 
   imports = [
     ./hyprland.nix
@@ -83,6 +96,29 @@
     EDITOR = "nvim";
   };
 
+  xdg = {
+    mime.enable = true;
+    desktopEntries.mupdfcustom = {
+      name = "mupdfcustom";
+      exec = "mupdf-gl -A 8";
+      type = "Application";
+      terminal = false;
+      mimeType = [ "application/pdf" ];
+    };
+    # After changing these setting restart the system or run:
+    # `systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service`
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "default-web-browser" = [ "firefox.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" ];
+        "application/pdf" = [ "mupdfcustom.desktop" ];
+      };
+    };
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
