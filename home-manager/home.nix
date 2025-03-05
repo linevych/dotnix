@@ -54,6 +54,7 @@
       ];
     })
     pkgs.hyprcursor
+    pkgs.hyprpaper
 
   ];
 
@@ -64,6 +65,16 @@
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 24;
+  };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      # TODO: figure out how to set base directory dynamically
+      preload = [ "~/projects/nixos/wallpaper.png" ];
+      wallpaper = [
+        "HDMI-A-2, ~/projects/nixos/wallpaper.png"
+      ];
+    };
   };
 
   imports = [
