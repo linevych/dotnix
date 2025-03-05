@@ -15,7 +15,6 @@ in
       "$mod" = "SUPER";
       "$menu" = "rofi -show drun -show-icons";
       "$terminal" = "kitty";
-
       exec-once = ''${startupScript}/bin/start'';
       monitor = [
         "HDMI-A-2, 3840x2160@144, 0x0, 1"
@@ -48,6 +47,8 @@ in
           "$mod SHIFT, left, resizeactive, -40 0"
           "$mod SHIFT, up, resizeactive, 0 -40"
           "$mod SHIFT, down, resizeactive, 0 40"
+
+          "$mod SHIFT, F, togglefloating"
         ]
         ++ (
           # workspaces
@@ -65,6 +66,11 @@ in
             ) 9
           )
         );
+
+      env = [
+        "HYPRCURSOR_THEME,Bibata-Modern-Classic"
+        "XCURSOR_SIZE, 24"
+      ];
     };
   };
 }
