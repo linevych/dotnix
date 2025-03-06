@@ -48,7 +48,12 @@ in
           "$mod SHIFT, up, resizeactive, 0 -40"
           "$mod SHIFT, down, resizeactive, 0 40"
 
+          # Swith between floating and tiling windows
           "$mod SHIFT, F, togglefloating"
+
+          # Volume key binds
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ]
         ++ (
           # workspaces
