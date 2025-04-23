@@ -40,6 +40,12 @@ in
           "$mod, up, movefocus, u"
           "$mod, down, movefocus, d"
 
+          # Swapping windows
+          "$mod ALT, left, swapwindow, l"
+          "$mod ALT, right, swapwindow, r"
+          "$mod ALT, up, swapwindow, u"
+          "$mod ALT, down, swapwindow, d"
+
           # Moving/resizing windows
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizeactive"
