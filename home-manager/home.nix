@@ -40,6 +40,7 @@
 
     # development stuff
     pkgs.go
+    pkgs.python3
     pkgs.jetbrains.pycharm-professional
     pkgs.jetbrains.goland
 
