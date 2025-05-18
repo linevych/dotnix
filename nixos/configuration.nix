@@ -8,7 +8,7 @@
 
   # Bootloader.
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.loader = {
     efi.canTouchEfiVariables = true;
     grub = {
