@@ -21,6 +21,7 @@
     pkgs.tree
     pkgs.bat
     pkgs.thefuck
+    pkgs.netcat
 
     # Hyprland dependencies (todo: move the module if possible)
     pkgs.waybar
@@ -28,10 +29,13 @@
     pkgs.swww
     pkgs.kitty
     pkgs.rofi-wayland
+    pkgs.hyprcursor
+    pkgs.hyprpaper
 
     # Graphics
     pkgs.inkscape
     pkgs.gimp
+    pkgs.obs-studio
 
     pkgs.mupdf
 
@@ -43,6 +47,7 @@
     pkgs.python3
     pkgs.jetbrains.pycharm-professional
     pkgs.jetbrains.goland
+    pkgs.obsidian
 
     # clipboard manager
     pkgs.copyq
@@ -56,7 +61,6 @@
     })
     pkgs.hyprcursor
     pkgs.hyprpaper
-
   ];
 
   gtk = {
@@ -81,6 +85,7 @@
   imports = [
     ./hyprland.nix
     ./waybar.nix
+    ./kitty.nix
   ];
 
   programs.git = {
