@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
@@ -6,6 +6,14 @@ let
   '';
 in
 {
+  home.packages = [
+    pkgs.waybar
+    pkgs.dunst
+    pkgs.swww
+    pkgs.rofi-wayland
+    pkgs.hyprcursor
+    pkgs.hyprpaper
+  ];
   wayland.windowManager.hyprland = {
 
     enable = true;

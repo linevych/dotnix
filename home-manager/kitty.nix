@@ -1,11 +1,11 @@
-{ lib, ... }:
+{ ... }:
 {
-  programs.kitty = lib.mkForce {
+  programs.kitty = {
     enable = true;
     settings = {
-      confirm_os_windows_close = 0;
+      confirm_os_window_close = 0;
       enable_audio_bell = false;
-      background_opacity = "0.9";
+      background_opacity = "1.0";
     };
   };
 }

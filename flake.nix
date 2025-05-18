@@ -11,12 +11,16 @@
 
     # Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # Fancy colors
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      catppuccin,
       home-manager,
       ...
     }@inputs:
@@ -38,7 +42,10 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./nixos/configuration.nix ];
+          modules = [
+            ./nixos/configuration.nix
+            catppuccin.nixosModules.catppuccin
+          ];
         };
       };
       homeConfigurations = {
@@ -47,7 +54,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./home-manager/home.nix ];
+          modules = [
+            ./home-manager/home.nix
+            catppuccin.homeModules.catppuccin
+          ];
         };
       };
     };

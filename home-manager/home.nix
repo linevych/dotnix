@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "anton";
@@ -19,18 +19,8 @@
 
     # CLI tools
     pkgs.tree
-    pkgs.bat
     pkgs.thefuck
     pkgs.netcat
-
-    # Hyprland dependencies (todo: move the module if possible)
-    pkgs.waybar
-    pkgs.dunst
-    pkgs.swww
-    pkgs.kitty
-    pkgs.rofi-wayland
-    pkgs.hyprcursor
-    pkgs.hyprpaper
 
     # Graphics
     pkgs.inkscape
@@ -59,9 +49,9 @@
         "JetBrainsMono"
       ];
     })
-    pkgs.hyprcursor
-    pkgs.hyprpaper
   ];
+  # For some reason it will not apply Catppuccin if I use pkgs
+  programs.bat.enable = true;
 
   gtk = {
     enable = true;
@@ -82,10 +72,14 @@
     };
   };
 
+  catppuccin.enable = true;
+  catppuccin.flavor = "macchiato";
+
   imports = [
     ./hyprland.nix
     ./waybar.nix
     ./kitty.nix
+    ./rofi.nix
   ];
 
   programs.git = {
