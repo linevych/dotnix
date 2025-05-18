@@ -47,8 +47,6 @@ in
           "$mod ALT, down, swapwindow, d"
 
           # Moving/resizing windows
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizeactive"
           "$mod SHIFT, right, resizeactive, 40 0"
           "$mod SHIFT, left, resizeactive, -40 0"
           "$mod SHIFT, up, resizeactive, 0 -40"
@@ -77,7 +75,11 @@ in
             ) 9
           )
         );
-
+      # Mouse binds
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizeactive"
+      ];
       env = [
         "HYPRCURSOR_THEME,Bibata-Modern-Classic"
         "XCURSOR_SIZE, 24"
