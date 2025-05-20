@@ -80,6 +80,7 @@
     ./waybar.nix
     ./kitty.nix
     ./rofi.nix
+    ./nvim.nix
   ];
 
   programs.git = {

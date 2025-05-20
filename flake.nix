@@ -14,6 +14,12 @@
 
     # Fancy colors
     catppuccin.url = "github:catppuccin/nix";
+
+    # Neovim but it's harder to debug probably
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -22,6 +28,7 @@
       nixpkgs,
       catppuccin,
       home-manager,
+      nixvim,
       ...
     }@inputs:
     let
@@ -55,8 +62,9 @@
             inherit inputs outputs;
           };
           modules = [
-            ./home-manager/home.nix
+            nixvim.homeManagerModules.nixvim
             catppuccin.homeModules.catppuccin
+            ./home-manager/home.nix
           ];
         };
       };
