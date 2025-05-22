@@ -7,6 +7,10 @@
       number = true;
       relativenumber = true;
     };
+    globals = {
+      "mapleader" = " ";
+      "maplocalleader" = " ";
+    };
 
     colorschemes.catppuccin.enable = true;
 
@@ -64,6 +68,18 @@
         { name = "path"; }
         { name = "buffer"; }
       ];
+      settings.mapping = {
+        "<C-space>" = "cmp.mapping.complete()";
+        "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+      };
+    };
+
+    plugins.telescope = {
+      enable = true;
+      keymaps = {
+        "<leader>fd" = "find_files";
+        "<leader>fb" = "buffers";
+      };
     };
   };
 }
