@@ -11,6 +11,13 @@
       "mapleader" = " ";
       "maplocalleader" = " ";
     };
+    keymaps = [
+      {
+        action = "<cmd>:w<cr>";
+        mode = [ "n" ];
+        key = "<leader>fs";
+      }
+    ];
 
     colorschemes.catppuccin.enable = true;
 
@@ -30,12 +37,29 @@
 
     plugins.lsp = {
       enable = true;
+
       servers = {
         rust-analyzer.enable = true;
         lua_ls.enable = true;
-        pylsp.enable = true;
+
+        pylsp = {
+          enable = true;
+          settings = {
+            plugins = {
+              black.enable = true;
+            };
+          };
+        };
+
+        # Support for Nix configs
         nil_ls = {
           enable = true;
+          settings = {
+            formatting = {
+              command = [ "nixfmt" ];
+            };
+
+          };
         };
         gopls = {
           enable = true;
@@ -50,6 +74,7 @@
             completeUnimported = true;
             usedPlaceholers = true;
             completeFunctionCalls = true;
+            oragnizeImports = true;
             staticcheck = true;
             analyses = {
               unusedparams = true;
@@ -58,6 +83,10 @@
           };
         };
       };
+
+    };
+    plugins.lsp-format = {
+      enable = true;
     };
 
     plugins.cmp = {
@@ -77,7 +106,7 @@
     plugins.telescope = {
       enable = true;
       keymaps = {
-        "<leader>fd" = "find_files";
+        "<leader>ff" = "find_files";
         "<leader>fb" = "buffers";
       };
     };
