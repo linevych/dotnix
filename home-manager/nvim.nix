@@ -6,6 +6,9 @@
     opts = {
       number = true;
       relativenumber = true;
+      colorcolumn = "120";
+      tabstop = 4;
+      shiftwidth = 4;
     };
     globals = {
       "mapleader" = " ";
@@ -80,6 +83,7 @@
               unusedparams = true;
               shadow = true;
             };
+            gofumpt = true;
           };
         };
       };
@@ -98,8 +102,10 @@
         { name = "buffer"; }
       ];
       settings.mapping = {
-        "<C-space>" = "cmp.mapping.complete()";
+        "<C-Space>" = "cmp.mapping.complete()";
         "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+        "<CR>" = "cmp.mapping.confirm({select = true})";
       };
     };
 
