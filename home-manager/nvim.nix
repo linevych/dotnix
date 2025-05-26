@@ -116,5 +116,8 @@
         "<leader>fb" = "buffers";
       };
     };
+    plugins.leap = {
+      enable = true;
+    };
   };
 }
