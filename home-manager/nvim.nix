@@ -22,7 +22,14 @@
       }
     ];
 
-    colorschemes.catppuccin.enable = true;
+    colorschemes = {
+      catppuccin = {
+        enable = true;
+        settings = {
+          flavour = "macchiato";
+        };
+      };
+    };
 
     plugins.lualine.enable = true;
 
@@ -42,7 +49,11 @@
       enable = true;
 
       servers = {
-        rust-analyzer.enable = true;
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+        };
         lua_ls.enable = true;
 
         pylsp = {
@@ -116,6 +127,11 @@
         "<leader>fb" = "buffers";
       };
     };
+    # Fancy icons, dependency for telescope
+    plugins.web-devicons = {
+      enable = true;
+    };
+
     plugins.leap = {
       enable = true;
     };
