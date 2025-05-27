@@ -5,7 +5,6 @@
     enable = true;
     opts = {
       number = true;
-      relativenumber = true;
       colorcolumn = "120";
       tabstop = 4;
       shiftwidth = 4;
@@ -19,6 +18,27 @@
         action = "<cmd>:w<cr>";
         mode = [ "n" ];
         key = "<leader>fs";
+      }
+      # Window manipulation
+      {
+        action = "<cmd>:vsplit<cr>";
+        mode = [ "n" ];
+        key = "<leader>w/";
+      }
+      {
+        action = "<cmd>:split<cr>";
+        mode = [ "n" ];
+        key = "<leader>w\\";
+      }
+      {
+        action = "<cmd>:close<cr>";
+        mode = [ "n" ];
+        key = "<leader>wd";
+      }
+      {
+        action = "<cmd>:only<cr>";
+        mode = [ "n" ];
+        key = "<leader>wD";
       }
     ];
 
@@ -122,9 +142,20 @@
 
     plugins.telescope = {
       enable = true;
+      extensions = {
+        file-browser = {
+          enable = true;
+          settings = {
+            hijack_netrw = true;
+          };
+        };
+
+      };
       keymaps = {
         "<leader>ff" = "find_files";
         "<leader>fb" = "buffers";
+        "<leader>fd" = "file_browser";
+
       };
     };
     # Fancy icons, dependency for telescope
@@ -133,6 +164,9 @@
     };
 
     plugins.leap = {
+      enable = true;
+    };
+    plugins.gitsigns = {
       enable = true;
     };
   };
