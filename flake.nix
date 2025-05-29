@@ -30,7 +30,7 @@
       home-manager,
       nixvim,
       ...
-    }@inputs:
+    }:
     let
       inherit (self) inputs;
       inherit (self) outputs;

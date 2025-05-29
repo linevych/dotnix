@@ -97,7 +97,6 @@
       "wheel"
       "plugdev"
     ];
-    packages = with pkgs; [ ];
   };
 
   # Switch to ZSH
