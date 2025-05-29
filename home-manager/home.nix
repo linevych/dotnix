@@ -42,19 +42,25 @@
     # clipboard manager
     pkgs.copyq
 
-    # reminder: this will be changed when 25.05 is released:
-    # https://www.reddit.com/r/NixOS/comments/1h1nc2a/nerdfonts_has_been_separated_into_individual_font/
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
+    # fonts
+    pkgs.nerd-fonts.jetbrains-mono
+
   ];
   # For some reason it will not apply Catppuccin if I use pkgs
   programs.bat.enable = true;
 
   gtk = {
     enable = true;
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [
+        "JetBrainsMono NF"
+        "monospace"
+      ];
+    };
   };
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
