@@ -51,6 +51,11 @@
       };
     };
 
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
+
     plugins.lualine.enable = true;
 
     plugins.treesitter = {
@@ -67,6 +72,19 @@
 
     plugins.lsp = {
       enable = true;
+
+      keymaps = {
+        lspBuf = {
+          "gd" = "definition";
+          "gD" = "references";
+          "gt" = "type_definition";
+          "gi" = "implementation";
+        };
+      };
+
+      keymaps = {
+
+      };
 
       servers = {
         rust_analyzer = {
