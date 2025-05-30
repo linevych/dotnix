@@ -78,7 +78,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -96,6 +96,7 @@
       "networkmanager"
       "wheel"
       "plugdev"
+      "docker"
     ];
   };
 
@@ -116,6 +117,12 @@
     home-manager
     networkmanagerapplet
   ];
+
+  virtualisation = {
+    docker = {
+      enable = true;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

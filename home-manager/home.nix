@@ -23,6 +23,7 @@
     pkgs.netcat
     pkgs.ripgrep
     pkgs.lazygit
+    pkgs.lazydocker
 
     # Graphics
     pkgs.inkscape
