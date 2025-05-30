@@ -21,6 +21,8 @@
     pkgs.tree
     pkgs.thefuck
     pkgs.netcat
+    pkgs.ripgrep
+    pkgs.lazygit
 
     # Graphics
     pkgs.inkscape
