@@ -9,6 +9,12 @@
       tabstop = 4;
       shiftwidth = 4;
     };
+    diagnostic.settings = {
+      virtual_lines = {
+        current_line = true;
+      };
+      virtal_text = false;
+    };
     globals = {
       "mapleader" = " ";
       "maplocalleader" = " ";
@@ -72,7 +78,6 @@
 
     plugins.lsp = {
       enable = true;
-
       keymaps = {
         lspBuf = {
           "gd" = "definition";
@@ -80,10 +85,6 @@
           "gt" = "type_definition";
           "gi" = "implementation";
         };
-      };
-
-      keymaps = {
-
       };
 
       servers = {
