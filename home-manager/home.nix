@@ -24,6 +24,7 @@
     pkgs.ripgrep
     pkgs.lazygit
     pkgs.lazydocker
+    pkgs.gnumake
 
     # Graphics
     pkgs.inkscape
