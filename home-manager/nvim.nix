@@ -84,6 +84,7 @@
           "gD" = "references";
           "gt" = "type_definition";
           "gi" = "implementation";
+          "grr" = "rename";
         };
       };
 
