@@ -39,7 +39,8 @@ in
         [
           "$mod, RETURN, exec, $terminal"
           "$mod, D, exec, $menu"
-          "$mod SHIFT, Q, exit"
+          # TODO: Reanable when I stop hitting that on accident
+          # "$mod SHIFT, Q, exit"
           "$mod SHIFT, E, killactive"
 
           # Swich windows with arrow keys
