@@ -46,7 +46,50 @@
         mode = [ "n" ];
         key = "<leader>wD";
       }
+      # Window movement
+      {
+        action = "<C-w>h";
+        mode = [
+          "n"
+          "t"
+        ];
+        key = "<C-h>";
+      }
+      {
+        action = "<C-w>j";
+        mode = [
+          "n"
+          "t"
+        ];
+        key = "<C-j>";
+      }
+      {
+        action = "<C-w>k";
+        mode = [
+          "n"
+          "t"
+        ];
+        key = "<C-k>";
+      }
+      {
+        action = "<C-w>l";
+        mode = [
+          "n"
+          "t"
+        ];
+        key = "<C-l>";
+      }
+
     ];
+
+    filetype = {
+      filename = {
+        "docker-compose.yaml" = "yaml.docker-compose";
+        "docker-compose.yml" = "yaml.docker-compose";
+        "compose.yaml" = "yaml.docker-compose";
+        "compose.yml" = "yaml.docker-compose";
+      };
+    };
 
     colorschemes = {
       catppuccin = {
@@ -136,6 +179,10 @@
             };
             gofumpt = true;
           };
+        };
+        docker_compose_language_service = {
+          enable = true;
+          autostart = true;
         };
       };
 
