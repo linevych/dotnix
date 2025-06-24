@@ -39,16 +39,24 @@
 
     # development stuff
     pkgs.go
+    pkgs.gcc
     pkgs.python3
     pkgs.jetbrains.pycharm-professional
     pkgs.jetbrains.goland
     pkgs.obsidian
+
+    pkgs.postgresql
+    pkgs.postgresql.pg_config
+    pkgs.libpq
 
     # clipboard manager
     pkgs.copyq
 
     # fonts
     pkgs.nerd-fonts.jetbrains-mono
+
+    # Yuck, but it suprisinly works with Wayland
+    pkgs.teams-for-linux
 
   ];
   # For some reason it will not apply Catppuccin if I use pkgs
