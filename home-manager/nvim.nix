@@ -222,6 +222,8 @@
         "<leader>ff" = "find_files";
         "<leader>fb" = "buffers";
         "<leader>fd" = "file_browser";
+        "<leader>gs" = "lsp_document_symbols";
+        "<leader>gS" = "lsp_workspace_symbols";
 
       };
     };
