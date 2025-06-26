@@ -122,6 +122,8 @@
         "git"
         "sudo"
         "thefuck"
+        "docker"
+        "docker-compose"
       ];
     };
     envExtra = ''DEFAULT_USER=anton''; # TODO: Remove hardcoded value
