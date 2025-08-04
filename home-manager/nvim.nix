@@ -184,6 +184,9 @@
           enable = true;
           autostart = true;
         };
+        clangd = {
+          enable = true;
+        };
       };
 
     };
