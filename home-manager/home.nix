@@ -41,8 +41,10 @@
     pkgs.go
     pkgs.gcc
     pkgs.python3
+    pkgs.nodejs_20
     pkgs.jetbrains.pycharm-professional
     pkgs.jetbrains.goland
+    pkgs.jetbrains.webstorm
     pkgs.obsidian
 
     pkgs.postgresql
