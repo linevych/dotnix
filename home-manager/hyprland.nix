@@ -13,6 +13,7 @@ in
     pkgs.rofi-wayland
     pkgs.hyprcursor
     pkgs.hyprpaper
+    pkgs.hyprshot
   ];
   wayland.windowManager.hyprland = {
 
@@ -23,6 +24,8 @@ in
       "$mod" = "SUPER";
       "$menu" = "rofi -show drun -show-icons";
       "$terminal" = "kitty";
+      "$screenshot" = "hyprshot";
+
       exec-once = ''${startupScript}/bin/start'';
       monitor = [
         "HDMI-A-2, 3840x2160@144, 0x0, 1"
@@ -34,11 +37,18 @@ in
         gaps_in = 1;
         gaps_out = 1;
       };
+      # Should fix issues with not beign able to use dropdowns in zoom
+      input = {
+        follow_mouse = 1;
+        mouse_refocus = false;
+      };
       # Keybinds
       bind =
         [
           "$mod, RETURN, exec, $terminal"
           "$mod, D, exec, $menu"
+          # Screenshot options, I only need "select region really"
+          ", PRINT, exec, $screenshot -m region"
           # TODO: Reanable when I stop hitting that on accident
           # "$mod SHIFT, Q, exit"
           "$mod SHIFT, E, killactive"

@@ -39,14 +39,14 @@
 
     # development stuff
     pkgs.go
+    pkgs.golangci-lint
+    pkgs.buf
     pkgs.gcc
-    pkgs.python3
-    pkgs.nodejs_20
+    pkgs.python313
     pkgs.jetbrains.pycharm-professional
     pkgs.jetbrains.goland
     pkgs.jetbrains.webstorm
     pkgs.obsidian
-
     pkgs.postgresql
     pkgs.postgresql.pg_config
     pkgs.libpq
@@ -57,9 +57,8 @@
     # fonts
     pkgs.nerd-fonts.jetbrains-mono
 
-    # Yuck, but it suprisinly works with Wayland
-    pkgs.teams-for-linux
-
+    # Glitchy piece of garbage
+    pkgs.zoom-us
   ];
   # For some reason it will not apply Catppuccin if I use pkgs
   programs.bat.enable = true;
@@ -71,7 +70,11 @@
       package = pkgs.gnome-themes-extra;
     };
   };
-
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true; # enables `use flake`
+    enableZshIntegration = true; # or:
+  };
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
@@ -112,6 +115,9 @@
     enable = true;
     userName = "antonlinevych";
     userEmail = "anton@linevich.net";
+    extraConfig = {
+      url."ssh://git@github.com/".insteadOf = "https://github.com/";
+    };
   };
   programs.zsh = {
     enable = true;
