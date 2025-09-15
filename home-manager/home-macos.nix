@@ -28,17 +28,12 @@
 
     # development stuff
     pkgs.go
-    # pkgs.golangci-lint # May have issues on macOS
+    pkgs.golangci-lint
     pkgs.gotools
-    # pkgs.go-critic # May have issues on macOS
-    # pkgs.gocyclo # May have issues on macOS
+    pkgs.go-critic
+    pkgs.gocyclo
     pkgs.buf
-    # pkgs.gcc # May cause issues on ARM64 macOS
     pkgs.python313
-    # JetBrains IDEs - may need manual installation on macOS
-    # pkgs.jetbrains.pycharm-professional
-    # pkgs.jetbrains.goland
-    # pkgs.jetbrains.webstorm
     pkgs.obsidian
     pkgs.postgresql
     pkgs.postgresql.pg_config
@@ -81,12 +76,12 @@
 
   catppuccin.enable = true;
   catppuccin.flavor = "macchiato";
+  catppuccin.kitty.enable = true;
 
   imports = [
     ./git.nix
     ./zsh.nix
   ];
-
 
   home.sessionVariables = {
     EDITOR = "nvim";
