@@ -113,6 +113,8 @@
   catppuccin.flavor = "macchiato";
 
   imports = [
+    ./git.nix
+    ./zsh.nix
     ./hyprland.nix
     ./waybar.nix
     ./kitty.nix
@@ -120,31 +122,6 @@
     ./nvim.nix
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "antonlinevych";
-    userEmail = "anton@linevich.net";
-    extraConfig = {
-      url."ssh://git@github.com/".insteadOf = "https://github.com/";
-    };
-  };
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "sudo"
-        "thefuck"
-        "docker"
-        "docker-compose"
-      ];
-    };
-    envExtra = ''DEFAULT_USER=anton''; # TODO: Remove hardcoded value
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

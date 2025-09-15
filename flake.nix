@@ -9,6 +9,12 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # nix-darwin for macOS system configuration
+    darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hyprland
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
@@ -28,22 +34,36 @@
       nixpkgs,
       catppuccin,
       home-manager,
+      darwin,
       nixvim,
       ...
     }:
     let
       inherit (self) inputs;
       inherit (self) outputs;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      # Configure nixpkgs with allowUnfree, allowUnsupportedSystem, and allowBroken
+      pkgsFor =
+        system:
+        import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowUnsupportedSystem = true;
+            allowBroken = true;
+          };
         };
-      };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+
+      # Keep NixOS configuration for Linux
       nixosConfigurations = {
         devBox = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -55,9 +75,24 @@
           ];
         };
       };
+
+      # nix-darwin configuration for macOS
+      darwinConfigurations = {
+        macbook = darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./darwin/configuration.nix
+          ];
+        };
+      };
+
+      # Home Manager configurations for both Linux and macOS
       homeConfigurations = {
+        # Linux configuration
         "anton@devBox" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = pkgsFor "x86_64-linux";
           extraSpecialArgs = {
             inherit inputs outputs;
           };
@@ -65,6 +100,26 @@
             nixvim.homeManagerModules.nixvim
             catppuccin.homeModules.catppuccin
             ./home-manager/home.nix
+            ./home-manager/hyprland.nix
+            ./home-manager/waybar.nix
+            ./home-manager/kitty.nix
+            ./home-manager/rofi.nix
+            ./home-manager/nvim.nix
+          ];
+        };
+
+        # macOS configuration
+        "anton@macbook" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor "aarch64-darwin";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            catppuccin.homeModules.catppuccin
+            ./home-manager/home-macos.nix
+            ./home-manager/kitty.nix
+            ./home-manager/nvim.nix
           ];
         };
       };
