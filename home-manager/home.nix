@@ -40,6 +40,9 @@
     # development stuff
     pkgs.go
     pkgs.golangci-lint
+    pkgs.gotools
+    pkgs.go-critic
+    pkgs.gocyclo
     pkgs.buf
     pkgs.gcc
     pkgs.python313
@@ -50,6 +53,12 @@
     pkgs.postgresql
     pkgs.postgresql.pg_config
     pkgs.libpq
+
+    # Yaml-engineering. Move into it's own flake probably
+    pkgs.kubectl
+    pkgs.minikube
+    pkgs.kind
+    pkgs.kubernetes-helm
 
     # clipboard manager
     pkgs.copyq
