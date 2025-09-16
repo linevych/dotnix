@@ -22,6 +22,7 @@
     pkgs.lazydocker
     pkgs.docker-compose
     pkgs.gnumake
+    pkgs.htop
 
     # For configuring the keyboard because Oryx doesn't want to support Firefox
     # pkgs.chromium # Not available on ARM64 macOS
@@ -35,9 +36,8 @@
     pkgs.buf
     pkgs.python313
     pkgs.obsidian
-    pkgs.postgresql
-    pkgs.postgresql.pg_config
     pkgs.libpq
+    pkgs.pre-commit
 
     # Yaml-engineering
     pkgs.kubectl
@@ -91,7 +91,7 @@
   targets.darwin.defaults = {
     # System preferences
     "com.apple.dock" = {
-      autohide = true;
+      autohide = false;
       show-recents = false;
       tilesize = 48;
     };
