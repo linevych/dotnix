@@ -38,6 +38,7 @@
     pkgs.obsidian
     pkgs.libpq
     pkgs.pre-commit
+    pkgs.trunk-io
 
     # Yaml-engineering
     pkgs.kubectl
