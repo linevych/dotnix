@@ -120,8 +120,8 @@
     ./kitty.nix
     ./rofi.nix
     ./nvim.nix
+    ./tmux.nix
   ];
-
 
   home.sessionVariables = {
     EDITOR = "nvim";
