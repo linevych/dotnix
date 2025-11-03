@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 let
@@ -10,6 +11,7 @@ in
   programs.tmux = {
     enable = true;
     prefix = "C-Space";
+    shell = lib.getExe pkgs.zsh;
 
     plugins = with pkgs.tmuxPlugins; [
       sensible

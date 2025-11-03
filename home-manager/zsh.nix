@@ -14,6 +14,9 @@
         "thefuck"
         "docker"
         "docker-compose"
+        "kubectl"
+        "kube-ps1"
+        "helm"
       ];
     };
     envExtra = ''DEFAULT_USER=anton''; # TODO: Remove hardcoded value
