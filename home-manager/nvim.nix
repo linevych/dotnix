@@ -1,8 +1,10 @@
-{ ... }:
+{ inputs, ... }:
 {
   programs.nixvim = {
 
     enable = true;
+    nixpkgs.source = import "${inputs.nixvim}/nixpkgs.nix";
+
     opts = {
       number = true;
       colorcolumn = "120";

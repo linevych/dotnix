@@ -21,6 +21,8 @@ in
     ];
 
     extraConfig = ''
+      unbind Space
+
       # Keybinding
       bind | split-window -h
       bind r source-file ${conf} \; display "Reloaded!"

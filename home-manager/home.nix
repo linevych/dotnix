@@ -15,7 +15,7 @@
 
   home.packages = [
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
 
     # CLI tools
     pkgs.tree
@@ -78,6 +78,8 @@
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
+    colorScheme = "dark";
+    gtk4.theme = null;
   };
   programs.direnv = {
     enable = true;
@@ -110,6 +112,7 @@
   };
 
   catppuccin.enable = true;
+  catppuccin.autoEnable = true;
   catppuccin.flavor = "macchiato";
 
   imports = [

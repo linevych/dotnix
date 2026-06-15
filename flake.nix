@@ -24,7 +24,6 @@
     # Neovim but it's harder to debug probably
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -61,7 +60,7 @@
         };
     in
     {
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
 
       # Keep NixOS configuration for Linux
       nixosConfigurations = {
@@ -97,7 +96,7 @@
             inherit inputs outputs;
           };
           modules = [
-            nixvim.homeManagerModules.nixvim
+            nixvim.homeModules.nixvim
             catppuccin.homeModules.catppuccin
             ./home-manager/home.nix
             ./home-manager/hyprland.nix
@@ -115,7 +114,7 @@
             inherit inputs outputs;
           };
           modules = [
-            nixvim.homeManagerModules.nixvim
+            nixvim.homeModules.nixvim
             catppuccin.homeModules.catppuccin
             ./home-manager/home-macos.nix
             ./home-manager/kitty.nix

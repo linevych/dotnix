@@ -11,7 +11,7 @@
 
   home.packages = [
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
 
     # CLI tools
     pkgs.tree
@@ -76,6 +76,7 @@
   };
 
   catppuccin.enable = true;
+  catppuccin.autoEnable = true;
   catppuccin.flavor = "macchiato";
   catppuccin.kitty.enable = true;
 

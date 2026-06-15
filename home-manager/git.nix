@@ -3,9 +3,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "linevych";
-    userEmail = "anton@linevich.net";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "linevych";
+        email = "anton@linevich.net";
+      };
       url."ssh://git@github.com/".insteadOf = "https://github.com/";
     };
   };
