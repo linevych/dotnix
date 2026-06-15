@@ -11,7 +11,6 @@
       plugins = [
         "git"
         "sudo"
-        "thefuck"
         "docker"
         "docker-compose"
         "kubectl"

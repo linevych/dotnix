@@ -28,6 +28,7 @@
   ];
   networking.networkmanager = {
     enable = true;
+    wifi.powersave = false;
   };
 
   # Set your time zone.
@@ -52,8 +53,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.autoSuspend = false;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.autoSuspend = false;
 
   # Enable Hyprland
   programs.hyprland = {
@@ -112,7 +113,7 @@
   environment.systemPackages = with pkgs; [
     wget
     htop
-    neofetch
+    fastfetch
     git
     home-manager
     networkmanagerapplet

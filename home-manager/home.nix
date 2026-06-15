@@ -19,7 +19,6 @@
 
     # CLI tools
     pkgs.tree
-    pkgs.thefuck
     pkgs.netcat
     pkgs.ripgrep
     pkgs.lazygit
@@ -46,7 +45,7 @@
     pkgs.buf
     pkgs.gcc
     pkgs.python313
-    pkgs.jetbrains.pycharm-professional
+    pkgs.jetbrains.pycharm
     pkgs.jetbrains.goland
     pkgs.jetbrains.webstorm
     pkgs.obsidian
@@ -68,6 +67,7 @@
 
     # Glitchy piece of garbage
     pkgs.zoom-us
+    pkgs.codex
   ];
   # For some reason it will not apply Catppuccin if I use pkgs
   programs.bat.enable = true;

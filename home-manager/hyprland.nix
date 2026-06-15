@@ -10,7 +10,6 @@ in
     pkgs.waybar
     pkgs.dunst
     pkgs.swww
-    pkgs.rofi-wayland
     pkgs.hyprcursor
     pkgs.hyprpaper
     pkgs.hyprshot
@@ -43,57 +42,56 @@ in
         mouse_refocus = false;
       };
       # Keybinds
-      bind =
-        [
-          "$mod, RETURN, exec, $terminal"
-          "$mod, D, exec, $menu"
-          # Screenshot options, I only need "select region really"
-          ", PRINT, exec, $screenshot -m region"
-          # TODO: Reanable when I stop hitting that on accident
-          # "$mod SHIFT, Q, exit"
-          "$mod SHIFT, E, killactive"
+      bind = [
+        "$mod, RETURN, exec, $terminal"
+        "$mod, D, exec, $menu"
+        # Screenshot options, I only need "select region really"
+        ", PRINT, exec, $screenshot -m region"
+        # TODO: Reanable when I stop hitting that on accident
+        # "$mod SHIFT, Q, exit"
+        "$mod SHIFT, E, killactive"
 
-          # Swich windows with arrow keys
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
+        # Swich windows with arrow keys
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
 
-          # Swapping windows
-          "$mod ALT, left, swapwindow, l"
-          "$mod ALT, right, swapwindow, r"
-          "$mod ALT, up, swapwindow, u"
-          "$mod ALT, down, swapwindow, d"
+        # Swapping windows
+        "$mod ALT, left, swapwindow, l"
+        "$mod ALT, right, swapwindow, r"
+        "$mod ALT, up, swapwindow, u"
+        "$mod ALT, down, swapwindow, d"
 
-          # Moving/resizing windows
-          "$mod SHIFT, right, resizeactive, 40 0"
-          "$mod SHIFT, left, resizeactive, -40 0"
-          "$mod SHIFT, up, resizeactive, 0 -40"
-          "$mod SHIFT, down, resizeactive, 0 40"
+        # Moving/resizing windows
+        "$mod SHIFT, right, resizeactive, 40 0"
+        "$mod SHIFT, left, resizeactive, -40 0"
+        "$mod SHIFT, up, resizeactive, 0 -40"
+        "$mod SHIFT, down, resizeactive, 0 40"
 
-          # Swith between floating and tiling windows
-          "$mod SHIFT, F, togglefloating"
+        # Swith between floating and tiling windows
+        "$mod SHIFT, F, togglefloating"
 
-          # Volume key binds
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              idx:
-              let
-                ws = idx + 1;
-              in
-              [
-                "$mod, code:1${toString idx}, workspace, ${toString ws}"
-                "$mod SHIFT, code:1${toString idx}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+        # Volume key binds
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            idx:
+            let
+              ws = idx + 1;
+            in
+            [
+              "$mod, code:1${toString idx}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString idx}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
       # Mouse binds
       bindm = [
         "$mod, mouse:272, movewindow"
