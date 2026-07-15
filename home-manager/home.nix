@@ -32,6 +32,9 @@
     pkgs.obs-studio
 
     pkgs.mupdf
+    pkgs.imagemagick
+    pkgs.exiftool
+    pkgs.feh
 
     # For configuring the keyboard because Oryx doesn't want to support Firefox
     pkgs.chromium
@@ -103,10 +106,12 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      # TODO: figure out how to set base directory dynamically
-      preload = [ "~/projects/nixos/wallpaper.png" ];
       wallpaper = [
-        "HDMI-A-2, ~/projects/nixos/wallpaper.png"
+        {
+          monitor = "HDMI-A-2";
+          path = "/home/anton/projects/nixos/wallpaper.png";
+          fit_mode = "cover";
+        }
       ];
     };
   };
