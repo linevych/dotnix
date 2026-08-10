@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   home.username = "anton";
@@ -70,8 +70,12 @@
 
     # Glitchy piece of garbage
     pkgs.zoom-us
-    pkgs.codex
   ];
+  programs.codex = {
+    enable = true;
+    package = pkgsUnstable.codex;
+  };
+
   # For some reason it will not apply Catppuccin if I use pkgs
   programs.bat.enable = true;
 

@@ -4,6 +4,7 @@
   inputs = {
     # NixOS
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home Manager
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -31,6 +32,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       catppuccin,
       home-manager,
       darwin,
@@ -54,8 +56,19 @@
           inherit system;
           config = {
             allowUnfree = true;
-            allowUnsupportedSystem = true;
-            allowBroken = true;
+            allowUnsupportedSystem = false;
+            allowBroken = false;
+          };
+        };
+
+      pkgsUnstableFor =
+        system:
+        import nixpkgs-unstable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowUnsupportedSystem = false;
+            allowBroken = false;
           };
         };
     in
@@ -94,6 +107,7 @@
           pkgs = pkgsFor "x86_64-linux";
           extraSpecialArgs = {
             inherit inputs outputs;
+            pkgsUnstable = pkgsUnstableFor "x86_64-linux";
           };
           modules = [
             nixvim.homeModules.nixvim
