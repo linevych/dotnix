@@ -69,7 +69,7 @@
     pkgs.nerd-fonts.jetbrains-mono
 
     # Glitchy piece of garbage
-    pkgs.zoom-us
+    pkgsUnstable.zoom-us
   ];
   programs.codex = {
     enable = true;
