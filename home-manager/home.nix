@@ -30,6 +30,7 @@
     pkgs.inkscape
     pkgs.gimp
     pkgs.obs-studio
+    pkgs.libreoffice-fresh
 
     pkgs.mupdf
     pkgs.imagemagick
