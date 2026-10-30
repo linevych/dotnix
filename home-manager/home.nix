@@ -31,6 +31,7 @@
     pkgs.gimp
     pkgs.obs-studio
     pkgs.libreoffice-fresh
+    pkgs.vlc
 
     pkgs.mupdf
     pkgs.imagemagick
