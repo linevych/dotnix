@@ -48,6 +48,7 @@
     pkgs.gocyclo
     pkgs.buf
     pkgs.gcc
+    pkgs.uv
     pkgs.python313
     pkgs.jetbrains.pycharm
     pkgs.jetbrains.goland
