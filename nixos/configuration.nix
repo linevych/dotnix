@@ -6,6 +6,13 @@
     ./hardware-configuration.nix
   ];
 
+  # Match the application themes configured by Home Manager.
+  catppuccin = {
+    enable = true;
+    autoEnable = true;
+    flavor = "macchiato";
+  };
+
   # Bootloader.
 
   boot.kernelPackages = pkgs.linuxPackages;
@@ -108,6 +115,8 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.dconf.enable = true;
+
+  programs.steam.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
